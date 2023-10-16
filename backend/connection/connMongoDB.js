@@ -1,23 +1,30 @@
-import { MongoClient } from "mongodb";
-import 'dotenv/config';
+// import { MongoClient } from "mongodb";
+// import 'dotenv/config';
+import mongoose from "mongoose";
 
-const client = new MongoClient(process.env.MONGODB_URI);
+// const client = new MongoClient(process.env.MONGODB_URI);
 
-const run = async() => {
-  try {
-    const database = client.db('padrinos');
-    const users = database.collection('user');
+export const connectDB = url => {
+  return mongoose.connect(url, {
+    useNewUrlParser: true,
+    dbName: 'padrinos',
+  })
+}
 
-    // * Query for a something
-    const query = { name: 'Ada Lovelace' };
-    const user = await users.findOne(query);
+// const run = async() => {
+//   try {
+//     const database = client.db('padrinos');
+//     const users = database.collection('user');
 
-    console.log(user);
-  } catch (err) {
-    console.log(err);
-  } finally {
-    await client.close();
-  }
-} 
+//     const query = { name: 'Ada Lovelace' };
+//     const user = await users.findOne(query);
 
-run();
+//     console.log(user);
+//   } catch (err) {
+//     console.log(err);
+//   } finally {
+//     await client.close();
+//   }
+// } 
+
+// run();

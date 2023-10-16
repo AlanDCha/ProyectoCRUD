@@ -9,7 +9,13 @@ import {
 
 const router = Router();
 
-router.route("/").get(getAllBlogs).post(createBlog);
-router.route("/:id").get(getBlogById).put(updateBlog).delete(deleteBlog);
+router.route("/")
+  .get(getAllBlogs)
+  .post(createBlog);
+
+router.route("/:id")
+  .get(getBlogById)
+  .put(updateBlog)
+  .delete(deleteBlog);
 
 export { router };
